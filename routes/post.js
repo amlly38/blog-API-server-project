@@ -1,6 +1,6 @@
 import express from 'express';
 import { body } from "express-validator";
-import { createPost } from "../controllers/post.js";
+import { createPost, getPosts, getPostById } from "../controllers/post.js";
 import { upload } from "../middlewares/upload.js";
 import { validateRequest } from "../middlewares/validateRequest.js";
 
@@ -15,6 +15,16 @@ router.post(
     ],
     validateRequest,
     createPost
+)
+
+router.get(
+    '/post',
+    getPosts
+)
+
+router.get(
+    '/post/:id',
+    getPostById
 )
 
 export default router;
